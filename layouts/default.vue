@@ -1,13 +1,38 @@
 <template>
-  <div>
-    <nuxt />
-  </div>
+  <el-container class="layout-default">
+
+
+    <el-header style="height:210px;">
+      <my-header/>
+    </el-header>
+
+
+    <el-main>
+      <nuxt/>
+    </el-main>
+
+
+    <el-footer>Footer</el-footer>
+
+
+  </el-container>
 </template>
+
+<script>
+
+import MyHeader from "@/components/public/header/index.vue"
+
+export default {
+  components:{
+    MyHeader
+  }
+}
+</script>
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
