@@ -3,7 +3,7 @@
     <el-row class="m-header-searchbar">
       <el-col :span="3" class="left">
         <img
-          src="https://s0.meituan.net/bs/fe-web-meituan/10afbf1/img/logo.png"
+          src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png"
           title="美团"
         />
       </el-col>
