@@ -45,6 +45,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    
   ],
   axios:{
 

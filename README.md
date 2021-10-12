@@ -20,3 +20,106 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+
+
+
+
+### 接口文档
+
+#### 注册用户
+
+*type:POST*
+
+*地址：/users/signup*
+
+|        | 字段     | 类型   | 必需 |
+| ------ | -------- | ------ | ---- |
+| 用户名 | username | String | 1    |
+| 密码   | password | String | 1    |
+| 邮箱   | email    | String | 1    |
+| 验证码 | code     | String | 1    |
+
+*返回值*
+
+```javascript
+//成功
+data{
+    
+}
+
+//失败
+
+```
+
+#### 登入
+
+*type:POST*
+
+*地址：/users/signin*
+
+|        | 字段     | 类型   | 必需 |
+| ------ | -------- | ------ | ---- |
+| 用户名 | username | String | 1    |
+| 密码   | password | String | 1    |
+
+*返回值*
+
+```javascript
+//成功
+data{
+    
+}
+
+//失败
+
+```
+
+#### 发送验证码
+
+*type:POST*
+
+*地址：*/users/verify
+
+|        | 字段     | 类型   | 必需 |
+| ------ | -------- | ------ | ---- |
+| 用户名 | username | String | 1    |
+| 邮箱   | email    | String | 1    |
+
+*返回值*
+
+```javascript
+//成功
+
+
+//失败
+
+```
+
+#### 退出登入
+
+*type:GET*
+
+*地址：*/users/exit
+
+*返回值*
+
+```javascript
+//成功
+
+//失败
+
+```
+
+#### 获取用户名
+
+*type:GET*
+
+*地址：*/users/getUser
+
+```javascript
+//成功
+
+//失败
+```
+
