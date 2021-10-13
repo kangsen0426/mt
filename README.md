@@ -25,6 +25,12 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 
 
+### 效果图
+
+![](index.png)
+
+
+
 ### 接口文档
 
 #### 注册用户
@@ -116,6 +122,30 @@ data{
 *type:GET*
 
 *地址：*/users/getUser
+
+```javascript
+//成功
+
+//失败
+```
+
+#### 获取地理位置
+
+*type:GET*
+
+*地址：*/geo/getPosition
+
+```javascript
+//成功
+
+//失败
+```
+
+#### 获取菜单数据
+
+*type:GET*
+
+*地址：*/geo/menu
 
 ```javascript
 //成功

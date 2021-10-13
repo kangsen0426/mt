@@ -33,5 +33,6 @@ export default {
                 return parseInt(new Date().getTime()) + (60*1000);
             }
         }
-    }
+    },
+    sign: "a3c9fe0782107295ee9f1709edd15218",
 }
