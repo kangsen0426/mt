@@ -30,7 +30,7 @@ export default {
         //设置过期时间
         get expire() {
             return () => {
-                return new Date().getTime() + 60 * 60 * 1000
+                return parseInt(new Date().getTime()) + (60*1000);
             }
         }
     }

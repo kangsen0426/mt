@@ -57,8 +57,8 @@
 </template>
 
 <script>
-
-import axios from "axios"
+import axios from "axios";
+import CryptoJS from "crypto-js";
 
 export default {
   layout: "blank",
@@ -146,14 +146,18 @@ export default {
       });
 
       if (!namePass && !emailPass) {
-
-        
         //验证通过 发送验证码
-        axios.post("/users/verify", {
+        axios
+          .post("/users/verify", {
             username: encodeURIComponent(self.ruleForm.name),
             email: self.ruleForm.email,
           })
           .then(({ status, data }) => {
+            console.log({
+              status,
+              data,
+            });
+
             if (status === 200 && data.code === 0) {
               //验证码发送成功
               let count = 60;
@@ -171,7 +175,39 @@ export default {
       }
     },
     register() {
-      
+      //验证登入
+      let self = this;
+      this.$refs["ruleForm"].validate((valid) => {
+        if (valid) {
+          axios
+            .post("/users/signup", {
+              username: window.encodeURIComponent(self.ruleForm.name),
+              password: CryptoJS.MD5(self.ruleForm.pwd).toString(),
+              email: self.ruleForm.email,
+              code: self.ruleForm.code,
+            })
+            .then(({ status, data }) => {
+              console.log({
+                status,
+                data,
+              });
+              if (status === 200) {
+                if (data && data.code === 0) {
+                  location.href = "/login";
+                } else {
+                  self.error = data.msg;
+                }
+              } else {
+                self.error = `服务器出错，错误码：${status}`;
+              }
+
+              //清空错误码
+              setTimeout(() => {
+                self.error = "";
+              }, 1500);
+            });
+        }
+      });
     },
   },
 };

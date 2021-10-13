@@ -3,6 +3,7 @@ import Redis from "koa-redis"
 import nodeMailer from 'nodemailer'
 import Passport from "./utils/passport"
 import axios from "./utils/axios"
+// import axios from 'axios'
 import Email from "../dbs/config"
 
 
@@ -151,7 +152,8 @@ router.post('/verify', async (ctx, next) => {
     let username = ctx.request.body.username
     const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
 
-    if (saveExpire && new Date().getTime() - saveExpire < 0) {
+    if (new Date().getTime() - saveExpire < 0) {
+        console.log(saveExpire,new Date().getTime());
         ctx.body = {
             code: -1,
             msg: '验证请求过于频繁，一分钟内一次'
@@ -226,7 +228,7 @@ router.get('/getUser', async (ctx) => {
         const { username, email } = ctx.session.passport.user
 
         ctx.body = {
-            user: username,
+            user: decodeURIComponent(username),
             email
         }
     } else {

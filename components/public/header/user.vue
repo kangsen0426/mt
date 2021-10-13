@@ -1,8 +1,9 @@
 <template>
   <div class="m-user">
     <template v-if="user">
-      欢迎您，<span class="username">{{ user }}</span> 
-      [<nuxt-link to="/exit">退出</nuxt-link>]
+      欢迎您，<span class="username">{{ user }}</span> [<nuxt-link to="/exit"
+        >退出</nuxt-link
+      >]
     </template>
     <template v-else>
       <nuxt-link to="/login" class="login">立即登入</nuxt-link>
@@ -12,12 +13,24 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-    data() {
-        return {
-            user:''
-        }
-    },
+  data() {
+    return {
+      user: "",
+    };
+  },
+  async mounted() {
+    const {
+      status,
+      data: { user },
+    } = await axios.get("/users/getUser");
+
+    if (status === 200) {
+      this.user = user;
+    }
+  },
 };
 </script>
 
